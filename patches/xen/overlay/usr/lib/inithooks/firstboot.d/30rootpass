@@ -3,10 +3,10 @@
 
 . /etc/default/inithooks
 
-if grep -qs ^root:U6aMy0wojraho /etc/shadow; then
-    [ -e $INITHOOKS_CONF ] && . $INITHOOKS_CONF
-    $INITHOOKS_PATH/bin/setpass.py root --pass="$ROOT_PASS"
-fi
+# if grep -qs ^root:U6aMy0wojraho /etc/shadow; then
+#     [ -e $INITHOOKS_CONF ] && . $INITHOOKS_CONF
+#     $INITHOOKS_PATH/bin/setpass.py root --pass="$ROOT_PASS"
+# fi
 
 exit 0
 
