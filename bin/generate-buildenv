@@ -23,6 +23,7 @@ Targets::
     vm          path/to/iso.hash
     ec2         path/to/iso.hash
     xen         path/to/iso.hash
+	linode      path/to/iso.hash
     docker      path/to/iso.hash
     container   path/to/iso.hash
     openstack   path/to/iso.hash
@@ -114,6 +115,7 @@ case $target in
     docker)     _common; _optimized $2; bt_docker;;
     container)  _common; _optimized $2;;
     openstack)  _common; _optimized $2;;
+    linode)     _common; _optimized $2;;	
     xen)        _common; _optimized $2;;
     *)          fatal "unrecognized build target";;
 esac

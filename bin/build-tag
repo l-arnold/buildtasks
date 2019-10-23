@@ -47,7 +47,10 @@ case $tag in
         ;;
     xen)
         # explictly use inithooks-xen.service
-        unit="xen"
+       # unit="xen"
+	   # LA wanting to kill inithooks-xen.service)but commented above by default so commented here 
+	   # consider linode service
+       # unit="default"
         ;;
     openstack)
         # explicitly use the inithooks-openstack.service

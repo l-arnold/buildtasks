@@ -16,7 +16,7 @@ info() { echo "INFO [$(basename $0)]: $@"; }
 usage() {
 cat<<EOF
 Syntax: $(basename $0) [--publish] appname-version
-Converts appliance appname-version to xen
+Converts appliance appname-version to linode
 
 Arguments::
 
@@ -49,7 +49,7 @@ export BT=$(dirname $(readlink -f $0))
 export BT_CONFIG=$BT/config
 . $BT_CONFIG/common.cfg
 
-O=$BT_BUILDS/xen
+O=$BT_BUILDS/linode
 mkdir -p $O
 
 if [ "$publish" == "yes" ]; then
@@ -78,33 +78,33 @@ tklpatch-apply $rootfs $BT/patches/headless
 
 mount --bind --make-rslave /dev $rootfs/dev
 
-tklpatch-apply $rootfs $BT/patches/xen
+tklpatch-apply $rootfs $BT/patches/linode
 umount $rootfs/dev
 
 $BT/bin/rootfs-cleanup $rootfs
 
-$BT/bin/aptconf-tag $rootfs xen
-$BT/bin/build-tag $rootfs xen
+$BT/bin/aptconf-tag $rootfs linode
+$BT/bin/build-tag $rootfs linode
 
-info "creating $name-xen.tar.bz2"
-tar --numeric-owner -C $rootfs -jcf $name-xen.tar.bz2 .
+info "creating $name-linode.tar.bz2"
+tar --numeric-owner -C $rootfs -jcf $name-linode.tar.bz2 .
 
-$BT/bin/generate-signature $O/$name-xen.tar.bz2
+$BT/bin/generate-signature $O/$name-linode.tar.bz2
 
-$BT/bin/generate-buildenv xen $BT_ISOS/$isofile.hash > $O/$name-xen.tar.bz2.buildenv
+$BT/bin/generate-buildenv linode $BT_ISOS/$isofile.hash > $O/$name-linode.tar.bz2.buildenv
 
 # publish if specified
 if [ "$publish" == "yes" ]; then
-    export PUBLISH_DEST=${BT_PUBLISH_IMGS}/xen/
-    $BT/bin/publish-files $O/$name-xen.tar.bz2
+    export PUBLISH_DEST=${BT_PUBLISH_IMGS}/linode/
+    $BT/bin/publish-files $O/$name-linode.tar.bz2
 
     export PUBLISH_DEST=${BT_PUBLISH_META}/
-    $BT/bin/publish-files $O/$name-xen.{tar.bz2.hash,tar.bz2.buildenv}
+    $BT/bin/publish-files $O/$name-linode.{tar.bz2.hash,tar.bz2.buildenv}
 fi
 
 if [ -z "$BT_DEBUG" ] && ! (mount | grep -q $(basename $rootfs)); then
     rm -rf $rootfs
     rm -rf $cdroot
-    [ "$publish" == "yes" ] && $BT/bin/clean xen $appver
+    [ "$publish" == "yes" ] && $BT/bin/clean linode $appver
 fi
 
