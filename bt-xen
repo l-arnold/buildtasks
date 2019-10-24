@@ -86,6 +86,12 @@ $BT/bin/rootfs-cleanup $rootfs
 $BT/bin/aptconf-tag $rootfs xen
 $BT/bin/build-tag $rootfs xen
 
+# Added for XEN/Linode Tweak  (LA)  - needs to be reworked w/ Linode build and likely removed 
+# later  - first commented line below is an alternative deletion  - Second line is a rename
+# so that the location and the subject can be found and changed as required by normal XEN
+# rm $rootfs/var/lib/turnkey-info/inithooks.service/xen
+mv  $rootfs/var/lib/turnkey-info/inithooks.service/xen  $rootfs/var/lib/turnkey-info/inithooks.service/xen-bak
+
 info "creating $name-xen.tar.bz2"
 tar --numeric-owner -C $rootfs -jcf $name-xen.tar.bz2 .
 

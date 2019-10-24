@@ -21,6 +21,9 @@ sed -i "/UNCONFIGURED INTERFACES/ s|^#||" /etc/network/interfaces
 # (not needed as is present LA) uncomment eth0 in interfaces file (commented out in common - see #952)
 # sed -i "/eth0/ s|^#||" /etc/network/interfaces
 
+# Per Linode Directive in ARCH-Debian
+ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+
 # disable confconsole init script
 update-rc.d -f confconsole disable
 
