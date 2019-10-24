@@ -27,5 +27,6 @@ ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 update-rc.d -f confconsole disable
 
 # redirect inithook output (preseeded headless deployment)
-sed -i '/REDIRECT_OUTPUT/ s/=.*/=true/g' /etc/default/inithooks
+# Not working in XEN as of round 3 - will try removal  - turnkey-init command in shell suffices for now
+# sed -i '/REDIRECT_OUTPUT/ s/=.*/=true/g' /etc/default/inithooks
 
