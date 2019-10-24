@@ -90,7 +90,7 @@ $BT/bin/build-tag $rootfs xen
 # later  - first commented line below is an alternative deletion  - Second line is a rename
 # so that the location and the subject can be found and changed as required by normal XEN
 # rm $rootfs/var/lib/turnkey-info/inithooks.service/xen
-mv  $rootfs/var/lib/turnkey-info/inithooks.service/xen  $rootfs/var/lib/turnkey-info/inithooks.service/xen-bak
+# mv  $rootfs/var/lib/turnkey-info/inithooks.service/xen  $rootfs/var/lib/turnkey-info/inithooks.service/xen-bak
 
 info "creating $name-xen.tar.bz2"
 tar --numeric-owner -C $rootfs -jcf $name-xen.tar.bz2 .
