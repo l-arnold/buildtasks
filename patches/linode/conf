@@ -14,7 +14,7 @@ update-grub
 ln -sf /boot/grub/grub.cfg /boot/grub/menu.lst
 
 # Remove UNCONFIGURED INTERFACES in interfaces file
-sed sed '/# Unconfigured INTERFACES/d' file
+sed '/# Unconfigured INTERFACES/d' file
 
 # (move to eth0 LA - this came from cloud patch) uncomment eth1 in interfaces file (commented out in common - see #952)
 # sed -i "/eth1/ s|^#||" /etc/network/interfaces
